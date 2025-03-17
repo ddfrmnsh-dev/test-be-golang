@@ -3,12 +3,13 @@ package repository
 import (
 	"api-backend-go/model"
 	"fmt"
+	"math"
 
 	"gorm.io/gorm"
 )
 
 type UserRepository interface {
-	FindAll() ([]model.User, error)
+	FindAll(page, limit int) ([]model.User, int64, error)
 	Save(user model.User) (model.User, error)
 	FindById(id int) (model.User, error)
 	FindBySingle(column, value string) (model.User, error)
@@ -24,22 +25,22 @@ func NewUserRepository(db *gorm.DB) *UserRepositoryImpl {
 	return &UserRepositoryImpl{db: db}
 }
 
-func (u *UserRepositoryImpl) FindAll() ([]model.User, error) {
+func (u *UserRepositoryImpl) FindAll(page, limit int) ([]model.User, int64, error) {
 	var users []model.User
+	var total int64
 
-	res := u.db.Find(&users)
+	u.db.Model(&users).Count(&total)
 
-	if res.Error != nil {
-		fmt.Println("Err db:", res.Error)
-		return nil, res.Error
+	offset := (page - 1) * limit
+	result := u.db.Limit(limit).Offset(offset).Find(&users)
+
+	if result.Error != nil {
+		return nil, 0, result.Error
 	}
 
-	if res.RowsAffected == 0 {
-		fmt.Println("No users found")
-		return users, nil
-	}
+	totalPages := int64(math.Ceil(float64(total) / float64(limit)))
 
-	return users, nil
+	return users, totalPages, nil
 }
 
 func (u *UserRepositoryImpl) Save(user model.User) (model.User, error) {

@@ -33,14 +33,20 @@ func (uh *UserHandler) Route() {
 }
 
 func (uh *UserHandler) getAllUser(c *gin.Context) {
-	users, err := uh.userUseCase.FindAllUser()
+	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
+	limit, _ := strconv.Atoi(c.DefaultQuery("limit", "5"))
+
+	users, total, err := uh.userUseCase.FindAllUser(page, limit)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, helper.APIErrorResponse("Failed to retrieve data users"))
 		return
 	}
 
 	if len(users) > 0 {
-		c.JSON(http.StatusOK, helper.APIResponse("Success to get data users", users))
+		c.JSON(http.StatusOK, helper.APIResponse("Success to get data users", gin.H{"total": total,
+			"page":  page,
+			"limit": limit,
+			"users": users}))
 		return
 	}
 

@@ -12,7 +12,7 @@ import (
 )
 
 type UserUseCase interface {
-	FindAllUser() ([]model.User, error)
+	FindAllUser(page, limit int) ([]model.User, int64, error)
 	CreateUser(input model.User) (model.User, error)
 	FindUserById(id int) (model.User, error)
 	FindUserByEmail(email string) (model.User, error)
@@ -28,13 +28,13 @@ func NewUserUseCase(userRepository repository.UserRepository) UserUseCase {
 	return &userUseCaseImpl{userRepository: userRepository}
 }
 
-func (uc *userUseCaseImpl) FindAllUser() ([]model.User, error) {
-	users, err := uc.userRepository.FindAll()
+func (uc *userUseCaseImpl) FindAllUser(page, limit int) ([]model.User, int64, error) {
+	users, total, err := uc.userRepository.FindAll(page, limit)
 	if err != nil {
-		return nil, err
+		return users, 0, err
 	}
 
-	return users, nil
+	return users, total, nil
 }
 
 func (uc *userUseCaseImpl) CreateUser(input model.User) (model.User, error) {
