@@ -3,7 +3,6 @@ package repository
 import (
 	"api-backend-go/model"
 	"fmt"
-	"math"
 
 	"gorm.io/gorm"
 )
@@ -38,9 +37,9 @@ func (u *UserRepositoryImpl) FindAll(page, limit int) ([]model.User, int64, erro
 		return nil, 0, result.Error
 	}
 
-	totalPages := int64(math.Ceil(float64(total) / float64(limit)))
+	// totalPages := int64(math.Ceil(float64(total) / float64(limit)))
 
-	return users, totalPages, nil
+	return users, total, nil
 }
 
 func (u *UserRepositoryImpl) Save(user model.User) (model.User, error) {
