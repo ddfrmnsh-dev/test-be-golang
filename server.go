@@ -85,6 +85,8 @@ func NewServer() *Server {
 	userUseCase := usecase.NewUserUseCase(userRepo)
 	authUseCase := usecase.NewAuthenticationImpl(userUseCase, jwtService)
 
+	userUseCase.StartWorkerPool(5)
+
 	engine := gin.Default()
 	host := fmt.Sprintf(":%s", cfg.ApiPort)
 	engine.Use(cors.New(cors.Config{
