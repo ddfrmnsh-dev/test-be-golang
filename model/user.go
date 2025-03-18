@@ -22,6 +22,14 @@ type InputLogin struct {
 	Password   string `json:"password" binding:"required"`
 }
 
+type InputRegister struct {
+	Username string `json:"username" binding:"required"`
+	Email    string `json:"email" binding:"required"`
+	Password string `json:"password" binding:"required"`
+	Role     string `json:"role" binding:"required"`
+	IsActive *bool  `json:"isActive" binding:"required"`
+}
+
 type UserResponse struct {
 	Id        int       `json:"id"`
 	Email     string    `json:"email"`

@@ -10,6 +10,7 @@ import (
 
 type AuthenticationUseCase interface {
 	LoginUser(email, password string) (string, model.User, error)
+	RegisterUser(input model.InputRegister) (model.User, error)
 }
 type authUseCaseImpl struct {
 	userUseCase UserUseCase
@@ -33,7 +34,7 @@ func (au *authUseCaseImpl) LoginUser(email, password string) (string, model.User
 	}
 
 	hasValidRole := false
-	if user.Role == "admin" || user.Role == "guest" {
+	if user.Role == "admin" {
 		hasValidRole = true
 	}
 
@@ -50,4 +51,20 @@ func (au *authUseCaseImpl) LoginUser(email, password string) (string, model.User
 		return "", user, err
 	}
 	return token, user, nil
+}
+
+func (au *authUseCaseImpl) RegisterUser(input model.InputRegister) (model.User, error) {
+	var payload model.User
+
+	payload.Username = input.Username
+	payload.Email = input.Email
+	payload.Password = input.Password
+	payload.Role = input.Role
+	payload.IsActive = input.IsActive
+
+	user, err := au.userUseCase.CreateUser(payload)
+	if err != nil {
+		return user, err
+	}
+	return user, nil
 }

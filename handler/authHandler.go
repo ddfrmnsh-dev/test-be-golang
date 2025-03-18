@@ -20,6 +20,7 @@ func NewAuthHandler(authUseCase usecase.AuthenticationUseCase, rg *gin.RouterGro
 
 func (ah *AuthHandler) Route() {
 	ah.rg.POST("/signinAuth", ah.loginUser)
+	ah.rg.POST("/registerUser", ah.registerUser)
 }
 
 func (ah *AuthHandler) loginUser(c *gin.Context) {
@@ -36,7 +37,7 @@ func (ah *AuthHandler) loginUser(c *gin.Context) {
 			c.JSON(http.StatusUnauthorized, helper.APIErrorResponse("Invalid credentials"))
 			return
 		}
-		c.JSON(http.StatusInternalServerError, helper.APIErrorResponse("Failed to process request"))
+		c.JSON(http.StatusInternalServerError, helper.APIErrorResponse(err.Error()))
 		return
 	}
 
@@ -48,4 +49,19 @@ func (ah *AuthHandler) loginUser(c *gin.Context) {
 		http.StatusOK,
 		helper.APIResponse("Login success", gin.H{"userPrincipal": formattedUser, "token": newToken}),
 	)
+}
+
+func (ah *AuthHandler) registerUser(c *gin.Context) {
+	var payload model.InputRegister
+	if err := c.ShouldBindJSON(&payload); err != nil {
+		c.JSON(http.StatusInternalServerError, helper.APIErrorResponse(err.Error()))
+		return
+	}
+	user, err := ah.authUseCase.RegisterUser(payload)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, helper.APIErrorResponse(err.Error()))
+		return
+	}
+	formattedUser := model.FormatUserResponse(user)
+	c.JSON(http.StatusOK, helper.APIResponse("Register success", formattedUser))
 }
