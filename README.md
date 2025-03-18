@@ -60,3 +60,9 @@ Setelah itu cek port Golang jika `ApiPort: "8888"` sudah terpakai pada lokal and
 
 Silahkan Import Postman Collection untuk mengetes API.
 `\api-backend-go\API Test Backend Golang.postman_collection.json`
+
+Atau Download Postman Collections dibawah ini
+
+## API Documentation
+
+[![Postman](https://api.postman.com/collections/23712389-bbca9453-8735-4dac-ad79-b68c5f754d49?access_key=PMAT-01JPM6QPM08KB42TCCFDK1B9J6)]
