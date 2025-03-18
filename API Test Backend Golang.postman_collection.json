@@ -1,0 +1,1219 @@
+{
+	"info": {
+		"_postman_id": "bbca9453-8735-4dac-ad79-b68c5f754d49",
+		"name": "API Test Backend Golang",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23712389",
+		"_collection_link": "https://www.postman.com/jovi-cimb/workspace/my-workspace/collection/23712389-bbca9453-8735-4dac-ad79-b68c5f754d49?action=share&source=collection_link&creator=23712389"
+	},
+	"item": [
+		{
+			"name": "Get All User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{vault:json-web-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8888/api/v1/users?page=abc&limit=def",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "abc"
+						},
+						{
+							"key": "limit",
+							"value": "def"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[Positive] Query Params Number",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8888/api/v1/users?page=1&limit=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 02:16:58 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1377"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Success to get data users\",\n    \"data\": {\n        \"limit\": 5,\n        \"page\": 1,\n        \"total\": 2,\n        \"users\": [\n            {\n                \"id\": 1,\n                \"username\": \"decil\",\n                \"email\": \"thechild@gmail.com\",\n                \"password\": \"$2a$10$wXlGi7eUSiJFedT7.lln3.GUpEs.pBChGtPLi3luWenbRS7fcoKFK\",\n                \"role\": \"admin\",\n                \"isActive\": true,\n                \"createdAt\": \"2025-03-16T16:38:54.408+07:00\",\n                \"updatedAt\": \"2025-03-16T16:38:54.408+07:00\"\n            },\n            {\n                \"id\": 3,\n                \"username\": \"lukas lima dua\",\n                \"email\": \"lukas.admin@mylab.local\",\n                \"password\": \"$2a$10$h8S4gTJZiNogJ3ATBaV7ye/Es.ZhwjdQJCZPhcubIxJc7NF0.F1pK\",\n                \"role\": \"admin\",\n                \"isActive\": true,\n                \"createdAt\": \"2025-03-17T19:52:53.818+07:00\",\n                \"updatedAt\": \"2025-03-17T21:09:36.119+07:00\"\n            },\n            {\n                \"id\": 4,\n                \"username\": \"leonard dewa\",\n                \"email\": \"leo.nard@gmail.com\",\n                \"password\": \"$2a$10$mcnojOvm0KfSmjzvpz4sd.cehh4ix9757Y0q1vLAf0CuhZa0kYo.O\",\n                \"role\": \"admin\",\n                \"isActive\": true,\n                \"createdAt\": \"2025-03-17T19:55:32.209+07:00\",\n                \"updatedAt\": \"2025-03-17T21:11:17.002+07:00\"\n            },\n            {\n                \"id\": 9,\n                \"username\": \"bintara\",\n                \"email\": \"bint.ara@gmail.com\",\n                \"password\": \"$2a$10$Ed7Fywsof8Jr7cZEL0IREuduon0c5TCxcwlzh5uZuMEfTesKi3Sl2\",\n                \"role\": \"guest\",\n                \"isActive\": false,\n                \"createdAt\": \"2025-03-17T21:11:46.674+07:00\",\n                \"updatedAt\": \"2025-03-17T21:11:46.674+07:00\"\n            },\n            {\n                \"id\": 10,\n                \"username\": \"looks new\",\n                \"email\": \"neww@gmail.com\",\n                \"password\": \"$2a$10$Z5rLTHjIB6UfvL.ZnuSzX.UYCfQTYC37sd7ckIelOTla50hXFAffi\",\n                \"role\": \"guest\",\n                \"isActive\": false,\n                \"createdAt\": \"2025-03-17T21:12:39.253+07:00\",\n                \"updatedAt\": \"2025-03-17T21:12:39.253+07:00\"\n            }\n        ]\n    },\n    \"status\": true\n}"
+				},
+				{
+					"name": "[Negative] Query Param String",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8888/api/v1/users?page=abc&limit=def",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "abc"
+								},
+								{
+									"key": "limit",
+									"value": "def"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 02:21:15 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "60"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid param limit\",\n    \"data\": null,\n    \"status\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "Get User By Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{vault:json-web-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8888/api/v1/user/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "14"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[Positive] Parameter id number",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8888/api/v1/user/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 02:13:17 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "304"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Success to get user\",\n    \"data\": {\n        \"id\": 1,\n        \"username\": \"decil\",\n        \"email\": \"thechild@gmail.com\",\n        \"password\": \"$2a$10$wXlGi7eUSiJFedT7.lln3.GUpEs.pBChGtPLi3luWenbRS7fcoKFK\",\n        \"role\": \"admin\",\n        \"isActive\": true,\n        \"createdAt\": \"2025-03-16T16:38:54.408+07:00\",\n        \"updatedAt\": \"2025-03-16T16:38:54.408+07:00\"\n    },\n    \"status\": true\n}"
+				},
+				{
+					"name": "[Negative] Parameter id string",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8888/api/v1/user/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "abc"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 02:13:48 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "56"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid user id\",\n    \"data\": null,\n    \"status\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{vault:json-web-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Parto Jawa\",\r\n    \"email\":\"parto.jawa@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"role\":\"guest\",\r\n    \"isActive\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8888/api/v1/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[Positive] Inputan sudah sesuai dengan validasi",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Regas Sanur\",\r\n    \"email\":\"regas.sanur@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"role\":\"admin\",\r\n    \"isActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 03:06:06 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "318"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Success to create user\",\n    \"data\": {\n        \"id\": 16,\n        \"username\": \"regas sanur\",\n        \"email\": \"regas.sanur@gmail.com\",\n        \"password\": \"$2a$10$MK/36D7/PgKMYvoDPEZa0e7/TPe/UmFq32T835xVTf9uCOpbFmqs.\",\n        \"role\": \"admin\",\n        \"isActive\": false,\n        \"createdAt\": \"2025-03-18T10:06:06.451+07:00\",\n        \"updatedAt\": \"2025-03-18T10:06:06.451+07:00\"\n    },\n    \"status\": true\n}"
+				},
+				{
+					"name": "[Negative] Validasi email tidak sesuai",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Regas Sanur\",\r\n    \"email\":\"regas.sanurgmail.com\",\r\n    \"password\":\"1234568\",\r\n    \"role\":\"admin\",\r\n    \"isActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 03:03:52 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "58"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"email tidak valid\",\n    \"data\": null,\n    \"status\": false\n}"
+				},
+				{
+					"name": "[Negative] Password minimal tidak terpenuhi",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Regas Sanur\",\r\n    \"email\":\"regas.sanur@gmail.com\",\r\n    \"password\":\"1234568\",\r\n    \"role\":\"admin\",\r\n    \"isActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 03:04:37 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "68"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"password minimal 8 karakter\",\n    \"data\": null,\n    \"status\": false\n}"
+				},
+				{
+					"name": "[Negative] Inputan tidak boleh empty string",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"\",\r\n    \"email\":\"regas.sanur@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"role\":\"admin\",\r\n    \"isActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 03:05:21 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "83"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"inputan Username tidak boleh string kosong\",\n    \"data\": null,\n    \"status\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "Update User By Id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{vault:json-web-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Lusiana\",\r\n    \"email\": \"lusiana.aka@mail.com\",\r\n    \"role\": \"admin\",\r\n    \"isActive\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8888/api/v1/user/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "14"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[Positive] Parameter id number",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Lusiana\",\r\n    \"email\": \"lusiana.aka@mail.com\",\r\n    \"role\": \"admin\",\r\n    \"isActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/v1/user/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "14"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 03:01:05 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "313"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Success to update user\",\n    \"data\": {\n        \"id\": 14,\n        \"username\": \"Lusiana\",\n        \"email\": \"lusiana.aka@mail.com\",\n        \"password\": \"$2a$10$KBidUfGeyWoOvvsWywDNSeVvaoUmkb1UlfQz6P6Rc1URH1JxuTmHu\",\n        \"role\": \"admin\",\n        \"isActive\": false,\n        \"createdAt\": \"2025-03-17T21:18:32.433+07:00\",\n        \"updatedAt\": \"2025-03-18T10:01:05.523+07:00\"\n    },\n    \"status\": true\n}"
+				},
+				{
+					"name": "[Negative] Parameter id string",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Ayu Novita Cantik\",\r\n    \"email\":\"ayu.novita@gmail.com\",\r\n    \"role\":\"guest\",\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/v1/user/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "abc"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 02:39:02 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid user ID format\",\n    \"data\": null,\n    \"status\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete User By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{vault:json-web-token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8888/api/v1/user/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "15"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[Positive] Parameter id number format",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8888/api/v1/user/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 02:36:32 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "308"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Success to delete user\",\n    \"data\": {\n        \"id\": 15,\n        \"username\": \"jnsajnas\",\n        \"email\": \"mamnw@mail.com\",\n        \"password\": \"$2a$10$3QyDuyBy07qtZWe9tSQVjOSF4Mt9OoGu/avFXur./ijNUM5J2cWCu\",\n        \"role\": \"admin\",\n        \"isActive\": false,\n        \"createdAt\": \"2025-03-17T21:19:09.622+07:00\",\n        \"updatedAt\": \"2025-03-17T21:19:09.622+07:00\"\n    },\n    \"status\": true\n}"
+				},
+				{
+					"name": "[Negative] Paramete id string",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{vault:json-web-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8888/api/v1/user/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "abc"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 02:35:55 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid user ID format\",\n    \"data\": null,\n    \"status\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "Signin User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"thechild@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8888/api/signinAuth",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"signinAuth"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[Negative] Email or Password invalid",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"thechildgmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/signinAuth",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"signinAuth"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 03:18:30 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "60"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid credentials\",\n    \"data\": null,\n    \"status\": false\n}"
+				},
+				{
+					"name": "[Positive] Email and Password is valid",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"thechild@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/signinAuth",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"signinAuth"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 03:19:07 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "60"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid credentials\",\n    \"data\": null,\n    \"status\": false\n}"
+				},
+				{
+					"name": "[Negative] User has role Guest not authorized",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"parto.jawa@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/signinAuth",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"signinAuth"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 06:40:58 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "81"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"you are not authorized to login as admin\",\n    \"data\": null,\n    \"status\": false\n}"
+				},
+				{
+					"name": "[Positive] User has role admin authorized",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"thechild@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/signinAuth",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"signinAuth"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 06:58:21 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "445"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Login success\",\n    \"data\": {\n        \"token\": \"Bearer {{vault:json-web-token}}\",\n        \"userPrincipal\": {\n            \"id\": 1,\n            \"email\": \"thechild@gmail.com\",\n            \"username\": \"Ayu Novita Cantik\",\n            \"isActive\": true,\n            \"role\": \"admin\",\n            \"createdAt\": \"2025-03-16T16:38:54.408+07:00\",\n            \"updatedAt\": \"2025-03-18T09:38:04.566+07:00\"\n        }\n    },\n    \"status\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"userguest\",\r\n    \"email\":\"user.guest@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"role\":\"guest\",\r\n    \"isActive\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8888/api/registerUser",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"api",
+						"registerUser"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[Positive] Create User with Role admin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"useradmin\",\r\n    \"email\":\"user.admin@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"role\":\"admin\",\r\n    \"isActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/registerUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"registerUser"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 06:48:49 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "235"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Register success\",\n    \"data\": {\n        \"id\": 26,\n        \"email\": \"user.admin@gmail.com\",\n        \"username\": \"useradmin\",\n        \"isActive\": false,\n        \"role\": \"admin\",\n        \"createdAt\": \"2025-03-18T13:48:49.352+07:00\",\n        \"updatedAt\": \"2025-03-18T13:48:49.352+07:00\"\n    },\n    \"status\": true\n}"
+				},
+				{
+					"name": "[Positive] Create User with Role guest",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"userguest\",\r\n    \"email\":\"user.guest@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"role\":\"guest\",\r\n    \"isActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/registerUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"registerUser"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 06:49:51 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "235"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Register success\",\n    \"data\": {\n        \"id\": 27,\n        \"email\": \"user.guest@gmail.com\",\n        \"username\": \"userguest\",\n        \"isActive\": false,\n        \"role\": \"guest\",\n        \"createdAt\": \"2025-03-18T13:49:51.841+07:00\",\n        \"updatedAt\": \"2025-03-18T13:49:51.841+07:00\"\n    },\n    \"status\": true\n}"
+				},
+				{
+					"name": "[Negative] Validasi Email telah digunaka",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"userguest\",\r\n    \"email\":\"user.guest@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"role\":\"guest\",\r\n    \"isActive\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8888/api/registerUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"registerUser"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Mar 2025 06:57:09 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "62"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"email sudah digunakan\",\n    \"data\": null,\n    \"status\": false\n}"
+				}
+			]
+		}
+	]
+}

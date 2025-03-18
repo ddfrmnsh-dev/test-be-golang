@@ -58,6 +58,5 @@ Sesuaikan dengan Environment lokal anda terkait koneksi database.
 
 Setelah itu cek port Golang jika `ApiPort: "8888"` sudah terpakai pada lokal anda atau sedang berjalan maka ganti port tersebut.
 
-Silahkan Import Postman Collection dibawah ini untuk mengetes API.
-
-[Postman Collection](https://api.postman.com/collections/23712389-bbca9453-8735-4dac-ad79-b68c5f754d49?access_key=PMAT-01JPM6QPM08KB42TCCFDK1B9J6)
+Silahkan Import Postman Collection untuk mengetes API.
+`\api-backend-go\API Test Backend Golang.postman_collection.json`
