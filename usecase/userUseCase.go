@@ -3,6 +3,7 @@ package usecase
 import (
 	"api-backend-go/model"
 	"api-backend-go/repository"
+	"errors"
 	"fmt"
 	"strconv"
 	"strings"
@@ -66,6 +67,12 @@ func (uc *userUseCaseImpl) worker(workerID int, resultChannel chan<- UserResult)
 
 func (uc *userUseCaseImpl) CreateUser(input model.User) (model.User, error) {
 	user := model.User{}
+
+	_, err := uc.userRepository.FindBySingle("email", input.Email)
+
+	if err == nil {
+		return user, errors.New("email sudah digunakan")
+	}
 
 	if !strings.Contains(input.Email, "@") {
 		return user, fmt.Errorf("email tidak valid")
