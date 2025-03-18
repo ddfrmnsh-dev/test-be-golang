@@ -33,8 +33,17 @@ func (uh *UserHandler) Route() {
 }
 
 func (uh *UserHandler) getAllUser(c *gin.Context) {
-	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
-	limit, _ := strconv.Atoi(c.DefaultQuery("limit", "5"))
+	page, err := strconv.Atoi(c.DefaultQuery("page", "1"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, helper.APIErrorResponse("Invalid param page format"))
+		return
+	}
+
+	limit, err := strconv.Atoi(c.DefaultQuery("limit", "5"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, helper.APIErrorResponse("Invalid param limit format"))
+		return
+	}
 
 	users, total, err := uh.userUseCase.FindAllUser(page, limit)
 	if err != nil {
@@ -75,7 +84,7 @@ func (uh *UserHandler) getUserById(c *gin.Context) {
 
 	id, err := strconv.Atoi(idUser)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, helper.APIErrorResponse("Invalid user id"))
+		c.JSON(http.StatusBadRequest, helper.APIErrorResponse("Invalid user ID format"))
 		return
 	}
 
@@ -92,7 +101,7 @@ func (uh *UserHandler) updateUser(c *gin.Context) {
 	var inputId model.GetCustomerDetailInput
 	err := c.ShouldBindUri(&inputId)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, helper.APIErrorResponse(err.Error()))
+		c.JSON(http.StatusBadRequest, helper.APIErrorResponse("Invalid user ID format"))
 		return
 	}
 
@@ -116,11 +125,12 @@ func (uh *UserHandler) deleteUser(c *gin.Context) {
 	var inputId model.GetCustomerDetailInput
 	err := c.ShouldBindUri(&inputId)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, helper.APIErrorResponse(err.Error()))
+		c.JSON(http.StatusBadRequest, helper.APIErrorResponse("Invalid user ID format"))
 		return
 	}
 
 	newId, _ := strconv.Atoi(inputId.Id)
+
 	deleteUser, err := uh.userUseCase.DeleteUserById(newId)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, helper.APIErrorResponse(err.Error()))
