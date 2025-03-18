@@ -32,7 +32,7 @@ func (ah *AuthHandler) loginUser(c *gin.Context) {
 
 	token, user, err := ah.authUseCase.LoginUser(payload.Identifier, payload.Password)
 	if err != nil {
-		if err.Error() == "invalid password" || err.Error() == "user not found" || err.Error() == "invalid credentials" {
+		if err.Error() == "invalid password" || err.Error() == "record not found" || err.Error() == "invalid credentials" {
 			c.JSON(http.StatusUnauthorized, helper.APIErrorResponse("Invalid credentials"))
 			return
 		}
